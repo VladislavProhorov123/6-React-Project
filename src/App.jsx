@@ -1,34 +1,35 @@
 import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-      <div className="bg-gray-800/70 backdrop-blur-md shadow-xl rounded-2xl p-8 w-110 text-center">
-        <h2 className="text-xl font-semibold mb-2">Счетчик:</h2>
-        <h1 className="text-5xl font-bold mb-6">{count}</h1>
-        <div className="flex gap-3 justify-center">
-          <button
-            className="text-white px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 active:scale-95 transition"
-            onClick={() => setCount(count - 1)}
-          >
-            - Минус
-          </button>
-          <button
-            className="text-white px-4 py-2 rounded-lg bg-gray-600 hover:bg-gray-700 active:scale-95 transition"
-            onClick={() => setCount(0)}
-          >
-            Сбросить
-          </button>
-          <button
-            className="text-white px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 active:scale-95 transition"
-            onClick={() => setCount(count + 1)}
-          >
-            Плюс +
-          </button>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <button className="cursor-pointer px-6 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition" onClick={() => setOpen(!open)}>Открыть окно</button>
+      {open && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg p-6 relative">
+            <button className="text-[22px] absolute top-4 right-4 text-gray-500 hover:text-gray-700" onClick={() => setOpen(false)}>
+              <i class="ri-close-line"></i>
+            </button>
+            <div className="flex flex-col items-center mb-6">
+              <img className="w-20 h-20 rounded-full object-cover mb-3 shadow-md" src="/ava2.jpg" alt="" />
+              <h3 className="text-lg font-semibold">Fronted Developer</h3>
+              <p className="text-gray-500 text-sm">Ukraine, Kyiv</p>
+            </div>
+            <h1 className="text-xl font-bold text-gray-800 mb-3 text-center">
+              Why Branches in Git Are Perfect for Managing Different Projects
+            </h1>
+            <p className="text-gray-600 leading-relaxed text-center">
+              Branches in Git are a powerful way to separate different versions
+              of your code. You can keep one project in the main branch and
+              start a completely new one in another branch. This makes it easy
+              to switch between projects, experiment safely, and keep your
+              GitHub repository clean.
+            </p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
