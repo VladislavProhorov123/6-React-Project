@@ -1,35 +1,53 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [searchTern, setSearchTern] = useState("");
+  const items = ["apple", "banana", "grape", "orange", "mango"];
+
+  const handleChange = (e) => {
+    setSearchTern(e.target.value);
+  };
+
+  const filteredItem = useMemo(() => {
+    return items.filter((item) =>
+      item.toLowerCase().includes(searchTern.toLowerCase())
+    );
+  }, [searchTern]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-      <div className="bg-gray-800/70 backdrop-blur-md shadow-xl rounded-2xl p-8 w-110 text-center">
-        <h2 className="text-xl font-semibold mb-2">Счетчик:</h2>
-        <h1 className="text-5xl font-bold mb-6">{count}</h1>
-        <div className="flex gap-3 justify-center">
-          <button
-            className="text-white px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 active:scale-95 transition"
-            onClick={() => setCount(count - 1)}
-          >
-            - Минус
-          </button>
-          <button
-            className="text-white px-4 py-2 rounded-lg bg-gray-600 hover:bg-gray-700 active:scale-95 transition"
-            onClick={() => setCount(0)}
-          >
-            Сбросить
-          </button>
-          <button
-            className="text-white px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 active:scale-95 transition"
-            onClick={() => setCount(count + 1)}
-          >
-            Плюс +
-          </button>
+    <>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700">
+        <div className="bg-white/10 backdrop-blur-lg shadow-xl rounded-2xl p-8 w-full max-w-md text-white">
+          <h2 className="text-2xl font-bold mb-6 text-center">
+            🍓Fruits Filter
+          </h2>
+          <input
+            type="search"
+            placeholder="Search fruit..."
+            value={searchTern}
+            onChange={handleChange}
+            className="w-full p-3 mb-6 rounded-lg border border-white/30 bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
+          />
+          <ul className="space-y-3">
+            {filteredItem.map((item, index) => (
+              <li
+                classNamep-3
+                rounded-lg
+                bg-gradient-to-r
+                from-indigo-600
+                to-pink-500
+                shadow-md
+                text-center
+                font-medium
+                key={index}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
