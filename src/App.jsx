@@ -1,15 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
-import Todo from "./component/Todo";
+import React from 'react'
+import Header from './component/Header'
 
-function App() {
-
-  
-  
+export default function App() {
   return (
-    <div className="bg-stone-900 grid py-4 min-h-screen">
-      <Todo />
+    <div>
+      <Header />
     </div>
-  );
+  )
 }
-
-export default App;
