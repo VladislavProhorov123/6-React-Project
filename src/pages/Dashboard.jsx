@@ -1,52 +1,23 @@
-import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import React from 'react'
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState("heroes");
   return (
-    <div className="border p-[10px]">
-      <h1>Dashboard</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et animi
-        aliquam officia error porro, labore adipisci laboriosam saepe iste
-        voluptatum ipsa totam quos eveniet, vitae numquam necessitatibus tenetur
-        minus explicabo?
-      </p>
-      <div className="flex gap-4 mb-4 border-b">
-        <button
-          onClick={() => setActiveTab("heroes")}
-          className={activeTab === "heroes" ? "border-b-2 border-blue-500" : ""}
-        >
-          Герои
-        </button>
-        <button onClick={() => setActiveTab('comments')} className={activeTab === 'comments' ? 'border-b-2 border-blue-500' : ''} >
-          Коментарии
-        </button>
-        <button onClick={() => setActiveTab('similar')} className={activeTab === 'similar' ? 'border-b-2 border-blue-500' : ''}>
-          Похожие фильмы 
-        </button>
-      </div>
-
-      <div>
-        {activeTab === 'heroes' && (
-          <div>
-            <h2>Герои фильма</h2>
-            <p>Содержимое вкладки Герои...</p>
-          </div>
-        )}
-        {activeTab === 'comments' && (
-          <div>
-            <h2>Комментарии</h2>
-            <p>Содержимое вкладки Комментарии...</p>
-          </div>
-        )}
-        {activeTab === 'similar' && (
-          <div>
-            <h2>Похожие фильмы</h2>
-            <p>Содержимое вкладки Похожие фильмы...</p>
-          </div>
-        )}
+    <div>
+      <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
+      <div className="grid grid-cols-3 gap-6">
+        <div className="bg-white rounded-xl shadow p-6">
+          <h2 className="text-xl font-semibold mb-2">Статистика</h2>
+          <p>Здесь будет краткий обзор статистики.</p>
+        </div>
+        <div className="bg-white rounded-xl shadow p-6">
+          <h2 className="text-xl font-semibold mb-2">Последние события</h2>
+          <p>Здесь список последних событий.</p>
+        </div>
+        <div className="bg-white rounded-xl shadow p-6">
+          <h2 className="text-xl font-semibold mb-2">Уведомления</h2>
+          <p>Здесь можно вывести уведомления.</p>
+        </div>
       </div>
     </div>
-  );
+  )
 }

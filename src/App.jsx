@@ -6,13 +6,22 @@ import { Link } from "react-router-dom";
 
 export default function App() {
   return (
-    <div>
-      <header>
-        <Link to="/">Dashboard</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/settings">Settings</Link>
-      </header>
-      <MainRoutes />
+        <div className="flex h-screen">
+          <aside className="w-64 bg-gray-800 text-white p-4 flex flex-col gap-4">
+            <h2 className="text-xl font-bold mb-6">Menu</h2>
+            <Link className="hover:text-gray-300" to="/">
+              Dashboard
+            </Link>
+            <Link className="hover:text-gray-300" to="/profile">
+              Profile
+            </Link>
+            <Link className="hover:text-gray-300" to="/settings">
+              Settings
+            </Link>
+          </aside>
+      <main className="flex-1 p-6">
+        <MainRoutes />
+      </main>
     </div>
   );
 }
